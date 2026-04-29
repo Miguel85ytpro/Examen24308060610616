@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4 card-steam">
+        <h4 class="text-uppercase text-center mb-4">Iniciar Sesión</h4>
+        
+        {% if error %}
+        <div class="alert alert-danger py-2 small text-center" style="background: rgba(220, 53, 69, 0.2); border: 1px solid #dc3545; color: #ff8585;">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <label class="small text-info">USUARIO</label>
+            <input type="text" name="usuario" class="form-control mb-3" required>
+            
+            <label class="small text-info">CONTRASEÑA</label>
+            <input type="password" name="password" class="form-control mb-4" required>
+            
+            <button type="submit" class="btn btn-steam w-100">ENTRAR</button>
+            
+            <div class="d-flex justify-content-between mt-3">
+                <a href="/recuperar" class="text-secondary small text-decoration-none">¿Olvidaste tu clave?</a>
+                <a href="/registro" class="text-info small fw-bold text-decoration-none">Crear cuenta nueva</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

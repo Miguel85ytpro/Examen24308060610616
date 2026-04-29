@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: radial-gradient(circle at top, #2a475e, #1b2838); color: #c7d5e0; min-height: 100vh; }
+        .navbar { background: #171a21 !important; }
+        .btn-steam { background: linear-gradient(to right, #47bfff, #1a44c2); color: white; border: none; }
+        .card-steam { background: rgba(0,0,0,0.5); border: 1px solid #3d4450; padding: 20px; }
+        input { background: #32353c !important; color: white !important; border: 1px solid #000 !important; }
+        
+        .dropdown-menu { background: #171a21; border: 1px solid #3d4450; }
+        .dropdown-item { color: #c7d5e0; }
+        .dropdown-item:hover { background: #3d4450; color: white; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">MI APP</a>
+        <div class="d-flex align-items-center">
+            <a class="text-info me-3 text-decoration-none" href="/tareas">TAREAS</a>
+            
+            {% if session.user %}
+                <div class="dropdown">
+                    <a class="text-white dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown">
+                        {{ session.user }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/">Perfil</a></li>
+                        <li><hr class="dropdown-divider border-secondary"></li>
+                        <li><a class="dropdown-item text-danger" href="/logout">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a class="btn btn-steam btn-sm" href="/login">LOGIN</a>
+            {% endif %}
+            
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
